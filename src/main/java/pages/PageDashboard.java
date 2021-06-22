@@ -200,7 +200,6 @@ public class PageDashboard extends PageUtility {
 		sa.assertTrue(backUpDatabase.isDisplayed(), "Backup Database is not displayed in Menu List");
 		sa.assertTrue(privateChat.isDisplayed(), "Private Chat is not displayed in Menu List");
 		sa.assertAll();
-
 	}
 
 	public void verifyDashboardItemsDisplayed() {
