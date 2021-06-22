@@ -28,22 +28,16 @@ public class PageMailbox extends PageUtility {
 	WebElement wSent;
 	@FindBy(xpath = "//a[@href='http://buffalocart.com/demo/erp/admin/mailbox/index/draft']")
 	WebElement wDrafts;
-
 	@FindBy(xpath = "//a[@href='http://buffalocart.com/demo/erp/admin/mailbox/index/favourites']")
 	WebElement wFavourites;
-
 	@FindBy(xpath = "//a[@href='http://buffalocart.com/demo/erp/admin/mailbox/index/trash']")
 	WebElement wTrash;
-
 	@FindBy(xpath = "//input[@id='parent_present']")
 	WebElement wCheckBoxIcon;
-
 	@FindBy(xpath = "//button[@class='btn btn-default btn-xs mr-sm']")
 	WebElement wDeleteIcon;
-
 	@FindBy(xpath = "//i[@class='fa fa-refresh']")
 	WebElement wRefreshIcon;
-
 	@FindBy(xpath = "//a[@href='http://buffalocart.com/demo/erp/admin/mailbox/index/compose']")
 	WebElement wComposeButton;
 	@FindBy(xpath = "//input[@placeholder='To : Select or Write']")
@@ -58,7 +52,6 @@ public class PageMailbox extends PageUtility {
 	WebElement wcomposeMailUpload;
 	@FindBy(xpath = "//button[@class='btn btn-primary']")
 	WebElement wcomposeMailSend;
-	
 	@FindBys(value = { @FindBy(xpath = "//table//tr") })
 	List<WebElement> wInboxMailsList;
 	@FindBys(value = { @FindBy(xpath = "//table//tr/td[1]//input") })
@@ -105,31 +98,51 @@ public class PageMailbox extends PageUtility {
 
 	}
 
+	//checking compose button click
 	public void clickComposeButton() {
 		click(wComposeButton);
 	}
+	
+	//Entering value to Compose Mail To
 	public void enterComposeMailTo(String composeTo) {	
 		waitForVisibility(wComposeMailTo);
 		sendKeys(wComposeMailTo, composeTo);
 		click(wComposeMailToSelected);
 	}
+	
+	//Entering value to Compose Mail Subject
 	public void enterComposeMailSubject(String composeSubject) {	
 		sendKeys(wComposeMailSubject, composeSubject);	
 	}
+	
+	//Entering value to Compose Mail Description
 	public void enterComposeMailDescription(String composeDescription) {
 		iframeIndexSwitch(0);
 		actionSendKeys(wcomposeMailDescription, composeDescription);
 		defaultSwitch();
-		
 	}
+	
+	//Uploading File
 	public void enterComposeMailClickUpload(String path) throws AWTException, InterruptedException {	
 		click(wcomposeMailUpload);
 		Thread.sleep(3000);
 		fileUploadMac(path);
 	}
+	//Click on Send Button
 	public void sendButton() throws InterruptedException {
 		
 		waitForVisibility(wcomposeMailSend);
 		actionClick(wcomposeMailSend);
 	}
+	
+	public void composeMailFunctionality(String composeTo,String composeSubject,String composeDescription,String path) throws Exception, Exception {
+		clickComposeButton();
+		enterComposeMailTo(composeTo);
+		enterComposeMailSubject(composeSubject);
+		enterComposeMailDescription(composeDescription);
+		enterComposeMailClickUpload(path);
+		sendButton();
+	}
+	
+	
 }

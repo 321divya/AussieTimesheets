@@ -92,7 +92,9 @@ public class PageUser extends PageUtility {
 	@FindBy(xpath = "//input[@name='skype']")
 	WebElement wRandomUserForEditEmpSkype;
 	@FindBy(xpath = "// div[@class='form-horizontal']/div[4]/child::div/div/div/label[1]")
-	WebElement wRandomUserForEditEmpPermissionMailbox;
+	WebElement wRandomUserForEditEmpPermissionMailboxYes;
+	@FindBy(xpath = "// div[@class='form-horizontal']/div[4]/child::div/div/div/label[2]")
+	WebElement wRandomUserForEditEmpPermissionMailboxNo;
 	@FindBy(xpath = "//button[text()='Update User']")
 	WebElement wRandomUserForEditEmpUpdate;
 	@FindBy(xpath = "//a[@href='http://buffalocart.com/demo/erp/admin/user/delete_user/34']")
@@ -269,7 +271,7 @@ public class PageUser extends PageUtility {
 		sendKeys(wRandomUserForEditEmpPhone,phone);
 		wRandomUserForEditEmpSkype.clear();
 		sendKeys(wRandomUserForEditEmpSkype, skypeId);
-		actionClick(wRandomUserForEditEmpPermissionMailbox);
+		actionClick(wRandomUserForEditEmpPermissionMailboxYes);
 		click(wRandomUserForEditEmpUpdate);
 		//Assertion checking whether the data is updated
 		waitForVisibility(wSearchAllColumn);
@@ -278,9 +280,12 @@ public class PageUser extends PageUtility {
 		click(wRandomUserForEdit);
 		implicitWait();
 		String act_EmpId=wRandomUserForEditEmpId.getAttribute("value");
-		System.out.println("emp: " +act_EmpId);
-		
-			
+		String act_Phone=wRandomUserForEditEmpPhone.getAttribute("value");
+		String act_SkypeId=wRandomUserForEditEmpSkype.getAttribute("value");
+		Assert.assertEquals(act_EmpId, empId,"The EmploymentId is not updated properly");
+		Assert.assertEquals(act_Phone, phone,"The Phone number is not updated properly");
+		Assert.assertEquals(act_SkypeId, skypeId,"The Skype id is not updated properly");
+		Assert.assertTrue(wRandomUserForEditEmpPermissionMailboxYes.isDisplayed(), "Mailbox Permission Yes is selected but not updated");
 	}
 	
 	//checking delete icon

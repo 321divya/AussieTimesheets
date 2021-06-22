@@ -151,12 +151,7 @@ public class TC_RegressionTest extends TestHelper {
 	
 	@Test(priority = 17, groups = { "mailbox_page" }, description = "Compose function verification")
 	public void tc25_VerifyComposeButtonMailBoxPage() throws Exception  {
-		objMailbox.clickComposeButton();
-		objMailbox.enterComposeMailTo(excelComposeMail.readData("To"));
-		objMailbox.enterComposeMailSubject(excelComposeMail.readData("Subject"));
-		objMailbox.enterComposeMailDescription(excelComposeMail.readData("Description"));
-		objMailbox.enterComposeMailClickUpload(excelComposeMail.readData("UploadFile"));
-		objMailbox.sendButton();
-		
+		objMailbox.composeMailFunctionality(excelComposeMail.readData("To"),excelComposeMail.readData("Subject"),excelComposeMail.readData("Description"),excelComposeMail.readData("UploadFile"));
+			
 	}
 }

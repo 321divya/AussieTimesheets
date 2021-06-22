@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite parallel="false" name="Suite">
+<suite parallel="tests" thread-count="2" name="Suite">
   <test name="Test">
+  <groups>
+  	<run>
+  		<include name="mailbox_page"/>
+  		
+  	</run>
+  </groups>
+    <classes>
+      <class name="scripts.TC_RegressionTest"/>
+    </classes>
+  </test> <!-- Test -->
+ <!-- <test name="Test1">
   <groups>
   	<run>
   		<include name="user_page"/>
@@ -10,5 +21,5 @@
     <classes>
       <class name="scripts.TC_RegressionTest"/>
     </classes>
-  </test> <!-- Test -->
+  </test>  -->
 </suite> <!-- Suite -->
