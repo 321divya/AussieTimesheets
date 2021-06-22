@@ -11,7 +11,7 @@
       <class name="scripts.TC_RegressionTest"/>
     </classes>
   </test> <!-- Test -->
- <!-- <test name="Test1">
+  <test name="Test1">
   <groups>
   	<run>
   		<include name="user_page"/>
@@ -21,5 +21,5 @@
     <classes>
       <class name="scripts.TC_RegressionTest"/>
     </classes>
-  </test>  -->
+  </test>  
 </suite> <!-- Suite -->
